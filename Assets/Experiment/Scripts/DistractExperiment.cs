@@ -1,18 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BrainVR.UnityFramework.Experiment;
 using UnityEngine;
-
-public class DistractExperiment : MonoBehaviour
+public class DistractExperiment : BaseExperiment
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AddSettings(ExperimentSettings settings)
     {
-        
+        Settings = (DistractExperimentSettings)settings;
+    }
+    public override string ExperimentHeaderLog()
+    {
+        return "Time; Trial; sound";
+    }
+    protected override bool CheckForEnd()
+    {
+        return TrialNumber > 4;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnExperimentInitialise()
     {
-        
+        Debug.Log("Experiment is initialised");
     }
 }
