@@ -2,6 +2,10 @@
 using UnityEngine;
 public class DistractExperiment : BaseExperiment
 {
+    private DistractExperimentSettings Settings;
+
+    private Color _currentColor;
+
     public override void AddSettings(ExperimentSettings settings)
     {
         Settings = (DistractExperimentSettings)settings;
@@ -12,11 +16,26 @@ public class DistractExperiment : BaseExperiment
     }
     protected override bool CheckForEnd()
     {
-        return TrialNumber > 4;
+        return TrialNumber > Settings.colors.Length;
     }
 
     protected override void OnExperimentInitialise()
     {
-        Debug.Log("Experiment is initialised");
+        Debug.Log("Hello, I ma initialising");
+    }
+    protected override void AfterExperimentSetup()
+    {
+        Debug.Log("Hi, I ma being setup");
+        SetupTrial();
+    }
+
+    protected override void OnTrialSetup()
+    {
+        _currentColor = Settings.colors[TrialNumber];
+    }
+
+    protected override void AfterTrialSetup()
+    {
+        StartTrial();
     }
 }

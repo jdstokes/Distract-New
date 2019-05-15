@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class DistractExperimentSettings : ExperimentSettings
 {
-
     public Color DistractColor;
     public float TrialTime;
+    public Color[] colors = {Color.red, Color.yellow, Color.red};
+
 
 #if UNITY_EDITOR
     [MenuItem("Assets/BrainVR/DistractExperimentSettings")]
